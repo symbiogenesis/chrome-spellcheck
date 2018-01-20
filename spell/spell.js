@@ -1,8 +1,5 @@
-var utilityDict = new Typo();
-var affData = utilityDict._readFile(chrome.extension.getURL('typo/dictionaries/en_US/en_US.aff'));
-var wordData = utilityDict._readFile(chrome.extension.getURL('typo/dictionaries/en_US/en_US.dic'));
+var notAllowed = {"is", "isn't", "be", "being", "been", "am", "are", "aren't", "was", "wasn't", "were", "weren't", "I'm", "you're", "we're", "they're", "he's", "she's", "it's", "there's", "here's", "where's", "what's", "who's", "that's", "ain't", "whatcha", "hain't", "yer" };
 
-var dict = new Typo('en_US', affData, wordData);
 var ignore = 'style script textarea code canvas'.replace(/\w+/g, '$&, $& *,').slice(0, -1);
 var pElm;
 
@@ -48,7 +45,7 @@ textNodesUnder(document.body).forEach(function(n) {
   if (!words || elm.matches(ignore)) { return; }
 
   words.forEach(function(word) {
-    if ( !dict.check(clean(word)) && !/^\d+$/.test(word)) {
+    if ( !notAllowed.indexof(clean(word)) && !/^\d+$/.test(word)) {
       unmarked = new RegExp('\\b' + word + '(?!@##)\\b', 'g');
       text = text.replace(unmarked, '##@$&@##');
     }
