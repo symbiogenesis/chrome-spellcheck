@@ -1,26 +1,26 @@
 {
 	"manifest_version": 2,
-	"name": "Spell Check",
-  "short_name": "Spell Check Page",
+	"name": "E-Prime Checker",
+  "short_name": "Check Page for E-Prime violations",
 	"version": "1.0.2",
-  "description": "Highlights misspelled words on the active webpage.",
+  "description": "Highlights forms of 'to be' on the active webpage.",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
   "permissions": [
-    "activeTab", "*://*/*"
+    "activeTab"
   ],
   "background": {
     "scripts": ["spell/background.js"],
     "persistent": false
   },
   "browser_action": {
-    "default_title": "Spell check this page"
+    "default_title": "Check this page"
   },
   "web_accessible_resources": [
-    "typo/dictionaries/*"
+    "spell/*", "icons/*"
   ],
   "commands": {
     "toggle-spell-check": {
@@ -28,7 +28,7 @@
         "default": "Ctrl+Shift+K",
         "mac": "Command+Shift+K"
       },
-      "description": "Toggle Spell Check"
+      "description": "Toggle E-Prime Check"
     }
   }
 }
