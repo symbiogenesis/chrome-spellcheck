@@ -1,6 +1,6 @@
 var notAllowed = ['is', 'isn%27t', 'be', 'being', 'been', 'am', 'are', 'aren%27t', 'was', 'wasn%27t', 'were', 'weren%27t', 'I%27m', 'you%27re', 'we%27re', 'they%27re', 'he%27s', 'she%27s', 'it%27s', 'there%27s', 'here%27s', 'where%27s', 'what%27s', 'who%27s', 'that%27s', 'ain%27t', 'whatcha', 'hain%27t', 'yer'];
 
-var ignore = 'style script textarea code canvas'.replace(/\w+/g, '$&, $& *,').slice(0, -1);
+var ignore = ['style', 'script', 'code', 'canvas'];
 var pElm;
 
 function textNodesUnder(elm){
@@ -40,12 +40,13 @@ textNodesUnder(document.body).forEach(function(n) {
   var text = n.nodeValue;
   var words = text.match(/[’'\w]+/g);
   var elm = n.parentElement;
+  var elmName = elm.tagName;
   var unmarked;
 
-  if (!words || elm.matches(ignore)) { return; }
+  if (!words || ignore.indexOf(elmName)) { return; }
 
   words.forEach(function(word) {
-    if ( !notAllowed.indexof(clean(word)) && !/^\d+$/.test(word)) {
+    if ( !notAllowed.indexOf(clean(word)) && !/^\d+$/.test(word)) {
       unmarked = new RegExp('\\b' + word + '(?!@##)\\b', 'g');
       text = text.replace(unmarked, '##@$&@##');
     }
