@@ -1,4 +1,4 @@
-var notAllowed = {"is", "isn't", "be", "being", "been", "am", "are", "aren't", "was", "wasn't", "were", "weren't", "I'm", "you're", "we're", "they're", "he's", "she's", "it's", "there's", "here's", "where's", "what's", "who's", "that's", "ain't", "whatcha", "hain't", "yer" };
+var notAllowed = ['is', 'isn%27t', 'be', 'being', 'been', 'am', 'are', 'aren%27t', 'was', 'wasn%27t', 'were', 'weren%27t', 'I%27m', 'you%27re', 'we%27re', 'they%27re', 'he%27s', 'she%27s', 'it%27s', 'there%27s', 'here%27s', 'where%27s', 'what%27s', 'who%27s', 'that%27s', 'ain%27t', 'whatcha', 'hain%27t', 'yer'];
 
 var ignore = 'style script textarea code canvas'.replace(/\w+/g, '$&, $& *,').slice(0, -1);
 var pElm;
