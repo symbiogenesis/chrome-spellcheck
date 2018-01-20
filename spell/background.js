@@ -5,7 +5,6 @@ function bootstrap() {
     activeTabId = tabs[0].id
 
     chrome.tabs.insertCSS(activeTabId, {file: "spell/spell.css"});
-    chrome.tabs.executeScript(activeTabId, {file: "typo/typo.js"});
     chrome.tabs.executeScript(activeTabId, {file: "spell/spell.js"});
     bootstraped = true;
   });
